@@ -30,6 +30,7 @@
     "graphql-tools": "^2.19.0",
     "merge-graphql-schemas": "^1.4.0",
     "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
     "sequelize": "^4.32.6"
   }
 }
