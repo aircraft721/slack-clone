@@ -21,11 +21,13 @@ const app = express();
 
 const graphqlEndpoint = '/graphql';
 
-app.use(graphqlEndpoint, bodyParser.json(), graphqlExpress({ schema }));
+app.use(graphqlEndpoint, bodyParser.json(), graphqlExpress({ schema, context : {
+    models
+}}));
 
 app.use('/graphiql', graphiqlExpress({ endpointURL: graphqlEndpoint }));
 
-models.sequelize.sync({ force: true }).then(x => {
+models.sequelize.sync().then(x => {
     app.listen(8080, () => {
         console.log('working');
     });
