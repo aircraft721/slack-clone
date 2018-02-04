@@ -11,13 +11,24 @@ export default (sequelize, DataTypes) => {
         password: {
             type: DataTypes.STRING,
         },
-    });
+    }, { underscored: true });
   
     User.associate = (models) => {
         User.belongsToMany(models.Team, {
             through: 'member',
-            foreignKey: 'userId',
-        })
+            foreignKey: {
+                name: 'userId',
+                field: 'user_id',
+            },
+        });
+        //N:M
+        User.belongsToMany(models.Channel, {
+            through: 'channel_member',
+            foreignKey: {
+                name: 'userId',
+                field: 'user_id',
+            },
+        });
     };
   
     return User;
