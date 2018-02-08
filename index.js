@@ -5,6 +5,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import models from './models';
 import path from 'path';
 import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
+import cors from 'cors';
 
 const types = fileLoader(path.join(__dirname, './schema'));
 const typeDefs = mergeTypes(types);
@@ -18,6 +19,7 @@ const schema = makeExecutableSchema({
 });
 
 const app = express();
+app.use(cors('*'));
 
 const graphqlEndpoint = '/graphql';
 

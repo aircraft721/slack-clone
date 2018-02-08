@@ -1,6 +1,6 @@
 
 import Sequelize from 'sequelize';
-const sequelize = new Sequelize('slacky', 'postgres', 'admin', {
+const sequelize = new Sequelize('postgres', 'postgres', 'admin', {
   dialect: 'postgres',
   define: {
     underscored: true,
