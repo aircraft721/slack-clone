@@ -17,10 +17,9 @@ class Register extends React.Component {
     };
 
     onSubmit = async () => {
-        const response = await this.props.mutate({
+        await this.props.mutate({
             variables: this.state,
         });
-        console.log(response);
     };
 
     render(){
